@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+body{
+  box-sizing: border-box;
+  margin: 0px;
+  background-color:rgb(20, 123, 208) ;
+  width:100%;
+  font-family: 'Roboto', sans-serif;
+}
+.logo{
+  margin: auto;
+  margin-top: 130px;
+  margin-bottom: 30px;
+  height: 35px;
+}
+.main{
+  text-align: center;
+}
+.logo img {
+  height: 100%;
+}
+.signup{
+  background-color: white;
+  width:320px;
+  border-radius: 3px;
+  margin: auto;
+  padding-left:40px;
+  padding-right:40px;
+  padding-top:30px;
+  text-align: center;
+}
+.signup form{
+  margin: auto;
+  width:100%;
+  padding-bottom: 30px;
+}
+.signup label{
+  display: block;
+  text-align: left;
+  font-weight: 600;
+}
+.signup input{
+  width:285px;
+  border:2px solid rgba(207, 207, 207, 0.47);
+  border-radius: 3px;
+  padding: 15px;
+  margin-top: 15px;
+  margin-bottom: 25px;
+  font-weight: 600;
+  background-color: rgb(249, 249, 249);
+}
+.signup button{
+  background: transparent;
+  background-color:rgb(73, 194, 103) ;
+  border:2px solid rgb(73, 194, 103);
+  border-radius: 3px;
+  width:100%;
+rgb(185, 185, 185)  height: 55px;
+  padding:15px;
+  margin-bottom: 5px;
+  font-weight: 700;
+  font-size: 20px;
+  color:white;
+
+}
+.existing, .main a{
+  font-weight: 700;
+  color:white;
+}
+.signup a{
+  color:rgb(194, 194, 194);
+  font-size: 13px;
+
+}
