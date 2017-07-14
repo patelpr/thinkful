@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="float-grid.css">
+    <title>Harry Potter Quiz</title>
+  </head>
+  <body>
+    <section class="top-bar" role="region">
+      <div class="row">
+        <div class="col-4">
+        <header role="banner">
+          <img src="http://logos-download.com/wp-content/uploads/2016/10/Harry_Potter_logo_wordmark.png" alt="Harry Potter Logo" />
+        </header>
+        </div>
+        <div class="col-4">
+          <p class="js-score"></p>
+        </div>
+        <div class="col-4">
+          <p class="js-completed"></p>
+        </div>
+      </div>
+    </section role="region">
+    <main class="container row">
+      <section class="js-start-screen start-screen row" role="region">
+        <div class="col-12">
+          <button class="js-start start col-12">Start!</button>
+        </div>
+      </section>
+      <section role="region">
+        <form id="js-quiz-form" action="#">
+          <div>
+            <p class="js-question"></p>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <input type="radio" name="answer" class="js-answerA">
+            </div>
+            <div class="col-6">
+              <input type="radio" name="answer" class="js-answerB">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <input type="radio" name="answer" class="js-answerC">
+            </div>
+            <div class="col-6">
+              <input type="radio" name="answer" class="js-answerD">
+            </div>
+            <div class="row">
+              <button class="start col-12" type="submit">Submit</button>
+            </div>
+          </div>
+        </form>
+      </section>
+      <section role="region">
+        <div class="wrong-section">
+          <p class="wrong-answer-text"></p>
+          <button class="js-start start">Continue</button>
+        </div>
+      </section>
+    </main>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="index.js"></script>
+  </body>
+</html>
