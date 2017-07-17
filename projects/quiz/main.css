@@ -1,12 +1,16 @@
 
 body *{
   box-sizing: border-box;
+  color: white;
 }
 body{
   margin: 0px;
   background-image: url('https://s-media-cache-ak0.pinimg.com/originals/86/13/e3/8613e3e693717bab025e6313ca1a8875.jpg');
-  background-size: cover;
+  background-position: center center;
   background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: black;
 }
 .wrong-section, #js-quiz-form{
   display:none;
@@ -18,19 +22,15 @@ body{
   margin: auto;
   margin-top: 0px;
   background-color: rgba(255, 255, 255, 0.6);
-}
-/*input{
-  display:none;
-}*/
-header img{
-  width:250px;
+  text-align: center;
+  padding-top: 15px;
 }
 .container{
   margin: auto;
   margin-top: 40px;
   background-color: rgba(0, 0, 0, 0.6);
 }
-.start {
+.start, .next {
     background-color: #4CAF50; /* Green */
     border: none;
     color: white;
@@ -40,16 +40,22 @@ header img{
     display: inline-block;
     font-size: 16px;
     margin: auto;
+    margin-top:30px;
 }
-.start:hover{
+.start:hover,.next:hover{
   background-color: green; /* Green */
 }
-.start:
 header *{
-  padding: 10px;
-  border-right: solid 1px gray;
+  width:100%;
+  margin:auto;
+  margin-top: 10px;
+  color:black;
+  text-align: center;
+
 }
 p{
-  font-size: 26px;
-  color: white;
+  font-size: 20px;
+}
+form *{
+  padding: 10px;
 }
