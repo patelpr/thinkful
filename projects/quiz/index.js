@@ -1,10 +1,27 @@
 //Questions Storage, You can add as many as you want,
 const STORE = [
-  {question:'What is Albus Dumbledore\'s full name?',answerA:' Albus Percival Wulfric Brian Dumbledore',answerB:'Albus Patrick William Bob Dumbledore',answerC:'Albus Brian Percival Wulfric Dumbledore',answerD:'Albus William Bob Patrick Dumbledore',correct:' Albus Percival Wulfric Brian Dumbledore'},
-  {question:'How many years in a row had Slytherin won the House Cup before Harry\'s arrival at Hogwarts in 1991?',answerA:'Three years',answerB:'Seven years',answerC:'Ten years',answerD:'Eight years',correct:'Seven years'},
-  {question:'Which two characters share a Patronus?',answerA:'Ron Weasley and Neville Longbottom',answerB:'Harry Potter and James Potter',answerC:'Severus Snape and Lily Potter',answerD:'Dean Thomas and Ginny Weasley',correct:'Severus Snape and Lily Potter'},
+  {
+    question:'What is Albus Dumbledore\'s full name?',
+    answers:[
+      'Albus Percival Wulfric Brian Dumbledore',
+      'Albus Patrick William Bob Dumbledore',
+      'Albus Brian Percival Wulfric Dumbledore',
+      'Albus William Bob Patrick Dumbledore'
+    ],
+    correct:'Albus Percival Wulfric Brian Dumbledore'
+  },
+  {
+    question:'How many years in a row had Slytherin won the House Cup before Harry\'s arrival at Hogwarts in 1991?',
+    answers:[
+      'Three years',
+      'Seven years',
+      'Ten years',
+      'Eight years'],
+    correct:'Seven years'
+  },
+  /*{question:'Which two characters share a Patronus?',answerA:'Ron Weasley and Neville Longbottom',answerB:'Harry Potter and James Potter',answerC:'Severus Snape and Lily Potter',answerD:'Dean Thomas and Ginny Weasley',correct:'Severus Snape and Lily Potter'},
   {question:'When Harry and Ron visit the Slytherin common room in disguise in The Chamber of Secrets, what is the password used to get inside?',answerA:'Salazar',answerB:'Pure-blood',answerC:'Parselmouth',answerD:'Draco dormiens nunquam titillandus',correct:'Pure-blood'},
-  {question:'When Harry and Hermione use the Time-Turner to save Sirius in The Prisoner of Azkaban, how many times does Hermione turn it?',answerA:'One time',answerB:'Two times',answerC:'Three times',answerD:'Four times',correct:'Three times'}
+  {question:'When Harry and Hermione use the Time-Turner to save Sirius in The Prisoner of Azkaban, how many times does Hermione turn it?',answerA:'One time',answerB:'Two times',answerC:'Three times',answerD:'Four times',correct:'Three times'}*/
 ]
 
 let questionnum = 0;
@@ -32,91 +49,74 @@ $(function() {
        }})});
 //Create html inputs and show questions and multiple choice,
 function redoInputs(){
-  $('#js-quiz-form').empty();
-  $('#js-quiz-form').append(`
-    <div>
-    <p class="js-question">${STORE[questionnum].question}</p>
-  </div>
-  <div class="row">
-    <div class="col-6">
-      <kbd>[A]</kbd><input type="radio" name="answer" value="${STORE[questionnum].answerA}" class="js-answerA">${STORE[questionnum].answerA}
-    </div>
-    <div class="col-6">
-      <kbd>[B]</kbd><input type="radio" name="answer" value="${STORE[questionnum].answerB}"  class="js-answerB">${STORE[questionnum].answerB}
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-6">
-      <kbd>[C]</kbd><input type="radio" name="answer"  value="${STORE[questionnum].answerC}"  class="js-answerC">${STORE[questionnum].answerC}
-    </div>
-    <div class="col-6">
-      <kbd>[D]</kbd><input type="radio" name="answer" value="${STORE[questionnum].answerD}"  class="js-answerD">${STORE[questionnum].answerD}
-    </div>
-    <div class="row">
-      <button class="start col-12" type="submit">Submit -or- <kbd>[ENTER]</kbd></button>
-    </div>
-  </div>
-  `);
+  $('#js-quiz-form').show();
+  $('.js-question').text(STORE[questionnum].question);
+  $('.js-answerA').val(STORE[questionnum].answers[0])
+  $('.js-answerB').val(STORE[questionnum].answers[1])
+  $('.js-answerC').val(STORE[questionnum].answers[2])
+  $('.js-answerD').val(STORE[questionnum].answers[3])
+  $('.js-labelA').text(STORE[questionnum].answers[0])
+  $('.js-labelB').text(STORE[questionnum].answers[1])
+  $('.js-labelC').text(STORE[questionnum].answers[2])
+  $('.js-labelD').text(STORE[questionnum].answers[3])
   checkAnswer();
 }
 //If answer is Correct
 function correctAnswer(){
-  $('#js-quiz-form').empty();
-  $('#js-quiz-form').append(`
-    <div>
-      <p class="js-question">YAY!! That's right! The answer is ${STORE[questionnum].correct}</p>
-    </div>
-    <button class="next">Continue -or- <kbd>[ENTER]</kbd></button>`);
+  $('#js-quiz-form').hide()
+  $('.js-next').show();
+  $('.js-question').text(`YAY!! That's right! The answer is ${STORE[questionnum].correct}`)
     $('.next').focus();
   $('.next').click(event => {
+    $('.js-next').hide();
     checkCompletion();
-
   })}
 //If answer is incorrect
 function incorrectAnswer(){
-  $('#js-quiz-form').empty();
-  $('#js-quiz-form').append(`
-    <div>
-      <p class="js-question">Sorry, that answer is incorrect. The correct answer is ${STORE[questionnum].correct}</p>
-    </div>
-    <button class="next start">Continue <kbd>[ENTER]</kbd></button>`);
-    $('.next').focus();
+  $('#js-quiz-form').hide();
+  $('.js-next').show();
+  $('.js-question').text('');
+  $('js-question').text(`Sorry, that is incorrect. The correct answer is ${STORE[questionnum].correct}`);
+  $('.next').focus();
   $('.next').click(event => {
+    $('.js-next').hide()
     checkCompletion();
-  })}
+  })};
+function clean(){
+  $('.js-answerA,.js-answerB,.js-answerC,.js-answerD').val('');
+  return;
+}
 //If answer is correct add a point
 function scoreKeeper(){
   score++;
   $('.js-score').text(`score:${score} / ${STORE.length}`);
-
+  clean();
+  correctAnswer();
 }
 //If answer is incorrect add a Wrong Point
 function wrongKeeper(){
   wrong++;
   $('.js-wrong').text(`Incorrect:${wrong} / ${STORE.length}`);
-
+  clean();
+  incorrectAnswer();
 }
 //Question number
 function onQuest(){
   $('.js-completed').text(`Question #:${questionnum + 2} / ${STORE.length}`);
   questionnum++;
-  console.log(questionnum);
   redoInputs();
+};
 
-}
 //If the questionnumber is equal to the question storage length, End Quiz
 function checkCompletion(){
-  if(questionnum >= 4){
-    $('#js-quiz-form').empty();
-    $('#js-quiz-form').append(`
-      <div>
-        <p class="js-question">YOU FINISHED THE QUIZ WITH ${(score / STORE.length )*100}% </p>
-        <button class="next">Retake!</button>
-      </div>
-    `);
+  if(questionnum + 1 >= STORE.length){
+    $('.js-complete').show()
+    $('.js-question').text(`YOU FINISHED THE QUIZ WITH ${(score / STORE.length )*100}%`);
     $('.next').focus();
-    $('.next').click(event => location.reload())
-      return;
+    $('.next').click(event => {
+      $('.js-complete').hide();
+      handleStart();
+    });
     }else{
       onQuest();
     }
@@ -132,19 +132,24 @@ function checkAnswer(){
     }
     if (answer === STORE[questionnum].correct){
       scoreKeeper();
-      correctAnswer();
     }else{
       wrongKeeper();
-      incorrectAnswer();
     }
   })};
     //handle Start
 //Start Screen lift off application upon clicking
 function handleStart(){
+questionnum = 0;
+score = 0;
+wrong = 0;
+  $('.js-wrong').text('Incorrect:');
+  $('.js-score').text('Score:');
+  $('.js-completed').text(`Question #:${questionnum} / ${STORE.length}`);
+  $('.js-start-screen').show();
   $('.js-start').focus();
   $('.js-start').click(event => {
-  $('.js-start-screen').css("display", "none");
-  $('#js-quiz-form').css("display", "block");
+  $('.js-start-screen').hide();
+  $('.js-completed').text(`Question #:${questionnum + 1} / ${STORE.length}`);
   redoInputs()})};
 
 handleStart();

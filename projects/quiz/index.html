@@ -25,15 +25,58 @@
         </div>
       </div>
     </section>
+
     <main class="container row" role="main">
+
+
       <section class="js-start-screen start-screen row" role="region">
         <div class="col-12">
           <button class="js-start start col-12">Start! -or- <kbd>[Enter]</kbd></button>
         </div>
       </section>
+
+
       <section role="region">
-        <form id="js-quiz-form" action="#" role="form"></form>
+        <form id="js-quiz-form" action="#" role="form">
+          <div>
+            <p class="js-question"></p>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <label for="js-answerA"><kbd>[A]</kbd></label><input type="radio" name="answer" id="js-answerA" class="js-answerA"><label for="js-answerA" class="js-labelA"></label>
+            </div>
+            <div class="col-6">
+              <label for="js-answerB"><kbd>[B]</kbd></label><input type="radio" name="answer" id="js-answerB"  class="js-answerB"><label for="js-answerB" class="js-labelB"></label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <label for="js-answerC"><kbd>[C]</kbd></label><input type="radio" name="answer" id="js-answerC" class="js-answerC"><label for="js-answerC" class="js-labelC"></label>
+            </div>
+            <div class="col-6">
+              <label for="js-answerD"><kbd>[D]</kbd></label><input type="radio" name="answer"  id="js-answerD" class="js-answerD"><label for="js-answerD" class="js-labelD"></label>
+            </div>
+            <div class="row">
+              <button class="start col-12" type="submit">Submit -or- <kbd>[ENTER]</kbd></button>
+            </div>
+          </div>
+        </form>
       </section>
+
+      <section role="region" class="row js-next">
+        <div class="col-12">
+          <p class="js-question"></p>
+        </div>
+        <button class="next">Continue -or- <kbd>[ENTER]</kbd></button>
+      </section>
+
+      <section role="region" class="js-complete">
+        <div>
+          <p class="js-question"> </p>
+        <button class="next">Retake!</button>
+      </div>
+      </section>
+
     </main>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
